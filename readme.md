@@ -2,10 +2,10 @@
 [@t0tinspire](https://twitter.com/t0tinspire/) :ear_of_rice: Sergio Forés
 
 ### Features
-- Build a static site with WP-Api
-- The "http-server" Module
-- Gulp Workflow
-- Plain Javascript, no third part libraries.
+- Gets json from a WP Backend with `XMLHttpRequest()` and `JSON.parse()`
+- Uses a simple zero-configuration command-line http server `> http-server -p 3000`
+- Automatic deployment to gh-pages `> gulp deploy`
+- Pure Plain Javascript, no third part libraries.
 - Scalable, Maintainable.
 
 ### Skills
@@ -15,16 +15,18 @@
   - User Interface Development
   - Custom Wordpress Themes
 
-### Workflow
-  - [SketchApp](http://bohemiancoding.com/sketch/) UI
-  - [Codekit](https://incident57.com/codekit/) as task managers
-  <!-- - [Bower](http://bower.io/) and [Node Package Manager](https://www.npmjs.com/) for Plugins -->
+
+### Tools
+  - [SketchApp](http://bohemiancoding.com/sketch/) for UI design
+  - [Principle](http://principleformac.com/) a plugin to create animated and interactive UI designs
+  - [Gulp](http://gulpjs.com/) task manager
+  - [Node Package Manager](https://www.npmjs.com/) (NPM)
   - [Github](https://github.com/) :octocat: Control version
   - [Github Pages](https://pages.github.com/) and [Netlify.com](Netlify.com) for fast deployment
-  - [Wordpress](http://wordpress.org) theme design
+  - [Wordpress](http://wordpress.org) theme development
     - [WP-Api](http://wp-api.org/) access to site’s data through an easy-to-use HTTP REST API
     - [ACF](http://www.advancedcustomfields.com/) full control of edit screens & custom field data
-  - [Jade](http://jade-lang.com/) and [Mustache](https://mustache.github.io/) Templating Engines
+  - [Jade](http://jade-lang.com/) for html Templating
   - Json data model
   - [BEM (Block, Element, Module)](https://en.bem.info/) and [SMACSS (Scalable and Modular Architecture for CSS)](https://smacss.com/)
   - [Sass](http://sass-lang.com/) and [Stylus](https://learnboost.github.io/stylus/) for preprocessing CSS

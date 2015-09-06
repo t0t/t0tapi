@@ -5,13 +5,10 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     maps = require('gulp-sourcemaps'),
-  ghpages = require('gulp-gh-pages'),
-    csso = require('gulp-csso');
+  ghPages = require('gulp-gh-pages'),
+      csso = require('gulp-csso'),
+minifyHTML = require('gulp-minify-html');
 
-// var options = {
-//   src: '',
-//   dist: 'dist'
-// };
 
 /**
 ** Javascript tasks
@@ -65,6 +62,22 @@ gulp.task('watchFiles', function() {
 ** IMG tasks
 **/
 
+gulp.task('minify-html', function() {
+  var opts = {
+    conditionals: true,
+    spare:true
+  };
+
+  return gulp.src('*.html')
+    .pipe(minifyHTML(opts))
+    .pipe(gulp.dest('./dist/'));
+});
+
+
+/**
+** IMG tasks
+**/
+
 gulp.task('img', function(){
   return gulp.src('img/**/*', {base: './'})
   .pipe(gulp.dest('dist'));
@@ -76,8 +89,8 @@ gulp.task('img', function(){
 **/
 
 gulp.task('deploy', function() {
-  return gulp.src('dist/*')
-    .pipe(ghpages());
+  return gulp.src('dist/**/*')
+    .pipe(ghPages());
 });
 
 // clean
@@ -90,7 +103,8 @@ gulp.task('clean', function() {
 gulp.task('build', [
   'compressJs',
   'compileSass',
-  'miniCss'
+  'miniCss',
+  'minify-html'
 ]);
 
 
