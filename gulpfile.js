@@ -47,6 +47,7 @@ gulp.task('compileSass', ['miniCss'], function() {
     .pipe(maps.write('./'))
     .pipe(gulp.dest('css'));
 });
+
 // minify css
 gulp.task('miniCss', function() {
     return gulp.src('css/main.css')
@@ -81,29 +82,6 @@ gulp.task('img', function(){
 });
 
 
-/**
-** Deploy to gh-Pages
-**/
-
-gulp.task('deploy', function() {
-  return gulp.src('dist/**/*')
-    .pipe(ghPages());
-});
-
-// clean
-gulp.task('clean', function() {
-  console.log('tarea limpiar');
-});
-
-
-// build
-gulp.task('build', [
-  'compressJs',
-  'compileSass',
-  'minify-html'
-]);
-
-
 // browser-sync
 gulp.task('browser-sync', function(){
   browserSync.init(['./css/main.css','./js/build.js'], {
@@ -113,6 +91,31 @@ gulp.task('browser-sync', function(){
   });
 });
 
+
+
+
+/**
+** THE TASKS
+**/
+
+// > gulp deploy
+gulp.task('deploy', [
+  'compressJs',
+  'compileSass',
+  'minify-html'
+], function() {
+  return gulp.src('dist/**/*')
+    .pipe(ghPages());
+});
+
+// > gulp build
+gulp.task('build', [
+  'compressJs',
+  'compileSass',
+  'minify-html'
+]);
+
+// > gulp watch
 gulp.task('watch',['browser-sync'], function(){
   gulp.watch(['./scss/*.scss'],['compileSass']);
 });

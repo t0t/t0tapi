@@ -3,7 +3,8 @@
 
 ### Features
 - Gets json from a WP Backend with `XMLHttpRequest()` and `JSON.parse()`
-- Uses a simple zero-configuration command-line http server `> http-server -p 3000`
+<!-- - Uses a simple zero-configuration command-line http server `> http-server -p 3000` -->
+- Uses Browser-Sync, Time-saving synchronised browser testing.
 - Automatic deployment to gh-pages `> gulp deploy`
 - Pure Plain Javascript, no third part libraries.
 - Scalable, Maintainable.
