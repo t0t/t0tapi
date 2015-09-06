@@ -117,5 +117,8 @@ gulp.task('build', [
 
 // > gulp watch
 gulp.task('watch',['browser-sync'], function(){
-  gulp.watch(['./scss/*.scss'],['compileSass']);
+  gulp.watch(['scss/*.scss','scss/**/*.scss','*.html'],['compileSass']);
 });
+
+// > gulp
+gulp.task('default', ['build']);
