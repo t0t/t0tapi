@@ -7,6 +7,7 @@
 - Automatic deployment to gh-pages `> gulp deploy`
 - Pure Plain Javascript, no third part libraries.
 - Scalable, Maintainable.
+- Hosted for free: gh-pages for the front-end and wordpress.com for the backend. :scream:
 
 ### Skills
   - CSS & Html Templating
