@@ -1,0 +1,35 @@
+/*
+Theme Name: t0twpapi
+Theme URI: t0twpapi/
+Author: Sergio
+Author URI: https://sergiofores.net/
+*/
+
+@import 'variables';
+
+
+
+
+a {
+  text-decoration: none;
+}
+.on {
+  background-color: pink;
+  padding: 10px;
+}
+body {
+  background-color: $bgcolor;
+}
+
+.post {
+  border: 1px solid red;
+}
+.post-item {
+  border: 1px solid pink;
+}
+.post-title {
+  border: 1px solid green;
+}
+.post-parrafo {
+  border: 1px solid olive;
+}
