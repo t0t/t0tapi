@@ -3,4 +3,5 @@ node_modules
 config.codekit
 .codekit-cache/**
 .DS_Store
+*/.DS_Store
 css/main.css*
