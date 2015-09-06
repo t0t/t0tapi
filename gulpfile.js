@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+browserSync = require('browser-sync').create(),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
@@ -39,7 +40,7 @@ gulp.task('compressJs', ['concatJs'], function() {
 **/
 
 // compila sass
-gulp.task('compileSass', function() {
+gulp.task('compileSass', ['miniCss'], function() {
   return gulp.src('scss/main.scss')
     .pipe(sass())
     .pipe(maps.init())
@@ -51,10 +52,6 @@ gulp.task('miniCss', function() {
     return gulp.src('css/main.css')
         .pipe(csso())
         .pipe(gulp.dest('dist/css'));
-});
-
-gulp.task('watchFiles', function() {
-  gulp.watch('scss/**/*.scss', ['compileSass']);
 });
 
 
@@ -103,12 +100,19 @@ gulp.task('clean', function() {
 gulp.task('build', [
   'compressJs',
   'compileSass',
-  'miniCss',
   'minify-html'
 ]);
 
 
-// default
-// gulp.task('default', ['clean','concatJs'], function(){
-//   gulp.start('build');
-// });
+// browser-sync
+gulp.task('browser-sync', function(){
+  browserSync.init(['./css/main.css','./js/build.js'], {
+    server: {
+      baseDir: './'
+    }
+  });
+});
+
+gulp.task('watch',['browser-sync'], function(){
+  gulp.watch(['./scss/*.scss'],['compileSass']);
+});

@@ -35,9 +35,7 @@
 
 ### Philosophy
 
-- HANDCRAFTED
-DESIGNS AND EXPERIENCES
-FOR BRANDS AND INDIVIDUALS
+- HANDCRAFTED DESIGNS AND EXPERIENCES FOR BRANDS AND INDIVIDUALS
 
 - Realizo sitios web a mano. Esto me permite tener total control del código, manteniendolo limpio y optimizado.
 
@@ -105,8 +103,6 @@ Generate small CSS and easy to understand.
   - [Yeoman](http://yeoman.io/)
 - Deploy
   - [Heroku](https://www.heroku.com)
-- Task runners
-  - [Gulp](http://gulpjs.com/)
 - Plugins, extensions
   - [Extensión Roots para hacer temas en Tumblr](https://github.com/carrot/roots-tumblr)
   - [sprout/roots template for building tumblr themes with roots](https://github.com/carrot/sprout-roots-tumblr)

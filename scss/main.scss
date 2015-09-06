@@ -11,7 +11,11 @@ Author URI: https://sergiofores.net/
 
 
 a {
+  color: red;
   text-decoration: none;
+  &:visited {
+    color: black;
+  }
 }
 .on {
   background-color: pink;
@@ -19,6 +23,7 @@ a {
 }
 body {
   background-color: $bgcolor;
+  // padding: 50px;
 }
 
 .post {
