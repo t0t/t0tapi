@@ -1,0 +1,25 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    title 2 Jade | t0twpapi
+    meta(name="viewport", content="width=device-width, user-scalable=no")
+    link(rel="stylesheet", href="./css/main.css")
+  body  
+    header(class="site-header")
+    h1 T0t WP-Api
+      nav(class="btn--mainmenu")
+        ul
+          li
+            a(href="/") TEST
+    main(id="mainDiv" class="site-main")
+      section(id="post-container")
+        div(id="posts")
+      section(id="form")
+        input(type="text", placeholder="introduce datos")
+        input(type="button", id="myButton", value="Pulsar")
+        input(type="submit")
+    footer(class="main-footer")
+      small credits &copy;
+      a(class="icon-logo_sf2" href="http://sergiofores.net")
+    script(src="./js/build.js")

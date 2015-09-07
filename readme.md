@@ -1,4 +1,4 @@
-# Clean Minimal WP-Api Rest Theme Boilerplate
+# Clean Minimal Webapp API Rest  Boilerplate
 [@t0tinspire](https://twitter.com/t0tinspire/) :ear_of_rice: Sergio Forés
 
 ### Features
