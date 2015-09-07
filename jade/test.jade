@@ -8,14 +8,7 @@ html(lang="es")
   body  
     header(class="site-header")
     h1 test page
-      nav(class="btn--mainmenu")
-        ul
-          li
-            a(href="./index.html") Enlace 1
-          li
-            a(href="./index.html") Enlace 2
-          li
-            a(href="./index.html") Enlace 3
+      include components/mainnav
     main(id="mainDiv" class="site-main")
       section(id="post-container")
         div(id="posts")
