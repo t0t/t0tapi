@@ -18,7 +18,7 @@ var gulp      = require('gulp'),
 **/
 
 // concatena los js en un build.js
-gulp.task('concatJs', ['compressJs'], function() {
+gulp.task('concatJs', function() {
   return gulp.src([
       'js/main.js',
       'js/other.js'])
@@ -32,7 +32,7 @@ gulp.task('concatJs', ['compressJs'], function() {
 gulp.task('compressJs', function() {
   return gulp.src('js/build.js')
     .pipe(uglify())
-    .pipe(gulp.dest('dist/js/*'));
+    .pipe(gulp.dest('dist/js'));
 });
 
 
@@ -63,13 +63,9 @@ gulp.task('miniCss', function() {
 **/
 
 gulp.task('minify-html', function() {
-  var opts = {
-    loose: true,
-    spare:true
-  };
 
   return gulp.src('*.html')
-    .pipe(minifyHTML(opts))
+    .pipe(minifyHTML())
     .pipe(gulp.dest('dist'));
 });
 
