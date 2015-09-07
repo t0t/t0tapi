@@ -1,0 +1,11 @@
+a {
+  color: white;
+  text-decoration: none;
+  &:visited {
+    color: black;
+  }
+}
+body {
+  background-color: $bgcolor;
+  // padding: 50px;
+}

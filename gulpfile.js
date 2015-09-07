@@ -13,36 +13,20 @@ var gulp      = require('gulp'),
   jade        = require('gulp-jade');
 
 
-/**
-** Javascript tasks
-**/
 
-// concatena los js en un build.js
+
+
+// concat Js
 gulp.task('concatJs', function() {
-  return gulp.src([
-      'js/main.js',
-      'js/other.js'])
-      .pipe(maps.init())
-      .pipe(concat('build.js'))
-      .pipe(maps.write('./'))
-      .pipe(gulp.dest('js'));
+  return gulp.src(['js/main.js','js/other.js'])
+    .pipe(maps.init())
+    .pipe(concat('build.js'))
+    .pipe(maps.write('./'))
+    .pipe(gulp.dest('js'));
 });
 
-// compress build.js
-gulp.task('compressJs', function() {
-  return gulp.src('js/build.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'));
-});
-
-
-
-/**
-** CSS tasks
-**/
-
-// compila sass
-gulp.task('compileSass', ['miniCss'], function() {
+// compile Sass
+gulp.task('compileSass', function() {
   return gulp.src('scss/main.scss')
     .pipe(sass())
     .pipe(maps.init())
@@ -50,82 +34,77 @@ gulp.task('compileSass', ['miniCss'], function() {
     .pipe(gulp.dest('css'));
 });
 
-// minify css
-gulp.task('miniCss', function() {
+// compile Jade
+gulp.task('compileJade', function() {
+  return gulp.src('./jade/*.jade')
+    .pipe(jade({pretty:true}))
+    .pipe(gulp.dest('./'));
+});
+
+//compile sass and jade
+gulp.task('compileSassJade',['compileSass','compileJade'])
+
+// ----- package
+
+// minify Css
+gulp.task('minifyCss', function() {
   return gulp.src('css/main.css')
     .pipe(csso())
     .pipe(gulp.dest('dist/css'));
 });
 
-
-/**
-** Html
-**/
-
-gulp.task('minify-html', function() {
-
+// minify Html
+gulp.task('minifyHtml', function() {
   return gulp.src('*.html')
     .pipe(minifyHTML())
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('jade', function() {
-  gulp.src('./jade/*.jade')
-    .pipe(jade())
-    .pipe(gulp.dest('./'))
+// compress Js
+gulp.task('compressJs', function() {
+  return gulp.src('js/build.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'));
 });
 
-/**
-** IMG tasks
-**/
-
+// place Imgs and icons
 gulp.task('img', function(){
-  return gulp.src('img/**/*', {base: './'})
-  .pipe(gulp.dest('dist'));
+  return gulp.src(['img/**/*','*.ico'], {base: './'})
+    .pipe(gulp.dest('dist'));
 });
 
+// delete generated files
+gulp.task('clean', function(){
+  del(['dist/**/*.*','css/*.css','css/*.css*','./*.html','js/build.js','js/build.js*']);
+});
 
-// browser-sync
-gulp.task('browser-sync', function(){
-  browserSync.init(['./css/main.css','./js/build.js'], {
-    server: {
-      baseDir: './'
-    }
+// > gulp watch
+gulp.task('watch', function(){
+  gulp.watch(['scss/*.scss','scss/**/*.scss'],['compileSass']);
+  gulp.watch('js/*.js',['concatJs']);
+  gulp.watch('jade/*.jade',['compileJade']);
+});
+
+// DEVELOPMENT
+gulp.task('dev', ['watch'], function(){
+  browserSync.init(['./css/main.css','./js/build.js','./*.html'], {
+    server: { baseDir: './' }
   });
 });
 
-// Clean
-gulp.task('clean', function(){
-  del(['dist','css','./*.html','js/build.js','js/build.js*']);
-});
+// > gulp build (compila los sass, jade y concatena los Js)
+gulp.task('build', ['compileSassJade','concatJs']);
 
+// package
+gulp.task('package', ['compressJs','minifyCss','img','minifyHtml']);
 
-/**
-** THE TASKS
-**/
-
-// > gulp deploy
-gulp.task('deploy', [
-  'compressJs',
-  'miniCss',
-  'minify-html'
-], function() {
+// PRODUCTION
+gulp.task('deploy', ['compressJs','minifyCss','minifyHtml','img'], function() {
   return gulp.src('dist/**/*')
-    .pipe(ghPages());
-});
-
-// > gulp build
-gulp.task('build', [
-  'compileSass',
-  'concatJs',
-  'compressJs',
-  'jade'
-]);
-
-// > gulp watch
-gulp.task('watch',['browser-sync'], function(){
-  gulp.watch(['scss/*.scss','scss/**/*.scss','./jade/*.jade', 'jade/**/*.jade'],['compileSass','jade']);
+  .pipe(ghPages());
 });
 
 // > gulp
-gulp.task('default', ['clean','build']);
+// gulp.task('default', ['clean'], function(){
+//   gulp.start('build');
+// });

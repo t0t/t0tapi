@@ -39,14 +39,14 @@ function lalala(cosa) {
 }
 var object1 = {
   get: lalala,
-  val: 000
+  val: 222
 }
 var object2 = {
   get: lalala,
   val: 111
 }
 
-object1.get("ssssssss");
+object1.get("yuyu");
 object2.get("oooooo");
 
 console.log(object1,object2);
