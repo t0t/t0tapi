@@ -1,8 +1,29 @@
-nav(class="btn--mainmenu")
-  ul
-    li
-      a(href="./test.html") Enlace 1
-    li
-      a(href="./test.html") Enlace 2
-    li
-      a(href="./test.html") Enlace 3
+mixin navmenu(menu_items)
+  
+  nav(class="btn--mainmenu")
+    ul
+      each item in menu_items
+        li
+          a(href= item.link)
+            =item.title
+
++navmenu(
+  [
+    {
+      'title':'home',
+      'link':'./index.html'
+    },
+    {
+      'title':'posts',
+      'link':'./posts.html'
+    },
+    {
+      'title':'page',
+      'link':'./page.html'
+    },
+    {
+      'title':'contacto',
+      'link':'./contacto.html'
+    }
+  ]
+)

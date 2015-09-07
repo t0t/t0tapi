@@ -36,7 +36,7 @@ gulp.task('compileSass', function() {
 
 // compile Jade
 gulp.task('compileJade', function() {
-  return gulp.src('./jade/*.jade')
+  return gulp.src(['./jade/*.jade','!./jade/_*.jade'])
     .pipe(jade({pretty:true}))
     .pipe(gulp.dest('./'));
 });
