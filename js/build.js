@@ -1,16 +1,7 @@
-// var ponClaseOn = document.getElementsByTagName('p')[0];
-// ponClaseOn.setAttribute('class', 'on');
-
-// var src = document.createElement('script');
-// src.setAttribute('src','assets/js/otherjs.js');
-// document.head.appendChild(src);
-
-// var loc = window.location.href;
-// console.log(loc);
+// jsonposts.js
 
 var elPost = document.getElementById('posts');
 
-// get json
 var url = 'https://public-api.wordpress.com/rest/v1.1/sites/t0twpapi.wordpress.com/posts/';
 var xhr = new XMLHttpRequest();
 xhr.addEventListener('load', function(){
@@ -33,24 +24,36 @@ xhr.addEventListener('load', function(){
 xhr.open('get', url);
 xhr.send();
 
+// var src = document.createElement('script');
+// src.setAttribute('src','assets/js/otherjs.js');
+// document.head.appendChild(src);
 
-function lalala(cosa) {
-  this.cosa = cosa;
+// var loc = window.location.href;
+// console.log(loc);
+
+/****** nav.js ******/
+// Active current item when its 'href' equals 'pathname'
+var nav = document.getElementById('mainNav');
+var anchor = mainNav.getElementsByTagName('a');
+var current = window.location.pathname;
+
+for (var i = 0; i < anchor.length; i++) {
+    if (anchor[i].pathname === current) {
+      this.anchor[i].setAttribute('class', 'active');
+    }
 }
-var object1 = {
-  get: lalala,
-  val: 222
-}
-var object2 = {
-  get: lalala,
-  val: 111
-}
 
-object1.get("yuyu");
-object2.get("oooooo");
 
-console.log(object1,object2);
+// var url = document.getElementsByTagName('a')[0];
 
-console.log('other js');
+// console.log(
+// 	url.href + '\n' +			// the full URL
+// 	url.protocol + '\n' +		// http:
+// 	url.hostname + '\n' +		// site.com
+// 	url.port + '\n' +			// 81
+// 	url.pathname + '\n' +		// /path/page
+// 	url.search + '\n' +			// ?a=1&b=2
+// 	url.hash					// #hash
+// );
 
 //# sourceMappingURL=build.js.map

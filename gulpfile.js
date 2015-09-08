@@ -18,7 +18,7 @@ var gulp      = require('gulp'),
 
 // concat Js
 gulp.task('concatJs', function() {
-  return gulp.src(['js/main.js','js/other.js'])
+  return gulp.src(['./js/src/*.js'])
     .pipe(maps.init())
     .pipe(concat('build.js'))
     .pipe(maps.write('./'))
@@ -81,7 +81,7 @@ gulp.task('clean', function(){
 // > gulp watch
 gulp.task('watch', function(){
   gulp.watch(['scss/*.scss','scss/**/*.scss'],['compileSass']);
-  gulp.watch('js/*.js',['concatJs']);
+  gulp.watch(['./js/build.js','./js/src/**/*'],['concatJs']);
   gulp.watch(['jade/*.jade','jade/**/*.jade'],['compileJade']);
 });
 

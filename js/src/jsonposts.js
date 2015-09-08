@@ -1,16 +1,7 @@
-// var ponClaseOn = document.getElementsByTagName('p')[0];
-// ponClaseOn.setAttribute('class', 'on');
-
-// var src = document.createElement('script');
-// src.setAttribute('src','assets/js/otherjs.js');
-// document.head.appendChild(src);
-
-// var loc = window.location.href;
-// console.log(loc);
+// jsonposts.js
 
 var elPost = document.getElementById('posts');
 
-// get json
 var url = 'https://public-api.wordpress.com/rest/v1.1/sites/t0twpapi.wordpress.com/posts/';
 var xhr = new XMLHttpRequest();
 xhr.addEventListener('load', function(){
@@ -32,21 +23,3 @@ xhr.addEventListener('load', function(){
 });
 xhr.open('get', url);
 xhr.send();
-
-
-function lalala(cosa) {
-  this.cosa = cosa;
-}
-var object1 = {
-  get: lalala,
-  val: 222
-}
-var object2 = {
-  get: lalala,
-  val: 111
-}
-
-object1.get("yuyu");
-object2.get("oooooo");
-
-console.log(object1,object2);

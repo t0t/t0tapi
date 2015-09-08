@@ -1,6 +1,6 @@
 mixin navmenu(menu_items)
   
-  nav(class="btn--mainmenu")
+  nav(class="btn--mainmenu", id="mainNav")
     ul
       each item in menu_items
         li
@@ -11,7 +11,7 @@ mixin navmenu(menu_items)
   [
     {
       'title':'home',
-      'link':'./index.html'
+      'link':'./'
     },
     {
       'title':'posts',
