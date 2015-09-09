@@ -1,4 +1,6 @@
+
 /****** nav.js ******/
+
 // Active current item when its 'href' equals 'pathname'
 var nav = document.getElementById('mainNav');
 var anchor = mainNav.getElementsByTagName('a');
@@ -12,7 +14,6 @@ for (var i = 0; i < anchor.length; i++) {
 
 
 // var url = document.getElementsByTagName('a')[0];
-
 // console.log(
 // 	url.href + '\n' +			// the full URL
 // 	url.protocol + '\n' +		// http:

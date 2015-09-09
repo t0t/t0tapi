@@ -5,7 +5,7 @@
 - Gets json from a WP Backend with `XMLHttpRequest()` and `JSON.parse()`
 - Uses [Browser-Sync](http://www.browsersync.io/), Time-saving synchronised browser testing.
 - Automatic deployment to gh-pages `> gulp deploy`
-- Pure Plain Javascript, no third part libraries.
+- Pure Plain Javascript, no 3rd party libraries.
 - Scalable, Maintainable.
 - Hosted for free: gh-pages for the front-end and wordpress.com for the backend. :scream:
 
@@ -40,7 +40,7 @@
 
 - Realizo sitios web a mano. Esto me permite tener total control del código, manteniendolo limpio y optimizado.
 
-- I do not use Third Party libraries (like Bootstrap, Fundation, Susy, etc.)
+- I do not use 3rd party libraries (like Bootstrap, Fundation, Susy, etc.)
 
   I hand-code everything from scratch, and there is a reason to to that: every line of code that I write it wanna serve one porpuse. Cuando incluyes una librería lo que estás haciendo es cargar una enorme candidad de código que se servirá al usuario y que tendrás que mantener. El 90% de ese código no lo necesitas.
 
