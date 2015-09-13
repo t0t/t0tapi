@@ -1,188 +1,178 @@
+//***** ES6 class *****
 
-/****** json.js ******/
+//base class
+"use strict";
 
-// posts
-var xhr = new XMLHttpRequest();
-var url = 'https://public-api.wordpress.com/rest/v1.1/sites/t0twpapi.wordpress.com/posts/';
-xhr.open('get', url, true);
-xhr.onreadystatechange = jsonGot;
-xhr.send();
-// xhr.close();
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function jsonGot(){
-  if (xhr.readyState === 4) {
-    if (xhr.status === 200) {
+var Human = (function () {
+  function Human(name) {
+    _classCallCheck(this, Human);
 
-      var myJSON = JSON.parse(xhr.responseText);
-      console.log('myJSON:');
-      var posts = '';
-      for (var i = 0; i < myJSON.posts.length; i++) {
-        posts += '<h3>' + myJSON.posts[i].title + '</h3>';
-        posts += '<small>' + myJSON.posts[i].date + '</small>';
-        posts += myJSON.posts[i].content;
-      console.log(myJSON.posts[i].date);
-      }
-      document.getElementById('posts').innerHTML = posts;
+    this.name = name;
+  }
 
-    } else {
-      alert('Tienes problemas para abrir el Json pero tranquilo el sol brilla y los pajaros cantan');
+  //child class
+
+  _createClass(Human, [{
+    key: "toString",
+    value: function toString() {
+      return "Hello! my name is " + this.name;
     }
+  }]);
+
+  return Human;
+})();
+
+var Person = (function (_Human) {
+  _inherits(Person, _Human);
+
+  function Person(name, age) {
+    _classCallCheck(this, Person);
+
+    _get(Object.getPrototypeOf(Person.prototype), "constructor", this).call(this, name);
+    this.age = age;
   }
-}
 
+  //create an instance
 
+  //override 'tostring' parent function
 
-
-
-
-
-
-
-// paginas
-var url2 = 'http://caferminet.es/wp-json/';
-var xhr2 = new XMLHttpRequest();
-xhr2.addEventListener('load', function(){
-  if (this.readyState === this.DONE) {
-    var jsonReq2 = JSON.parse(this.responseText);
-    console.log(jsonReq2);
-  }
-});
-xhr2.open('get', url2);
-xhr2.send();
-
-// paginas
-var url3 = 'http://caferminet.es/wp-json/posts';
-var xhr3 = new XMLHttpRequest();
-xhr3.addEventListener('load', function(){
-  if (this.readyState === this.DONE) {
-
-    var jsonReq3 = JSON.parse(this.responseText);
-      console.log('paginas: '+jsonReq3);
-    for (var i = 0; i < jsonReq3.length; i++) {
-
+  _createClass(Person, [{
+    key: "toString",
+    value: function toString() {
+      return _get(Object.getPrototypeOf(Person.prototype), "toString", this).call(this) + " and my age is " + this.age + ".";
     }
-  }
-});
-xhr3.open('get', url3);
-xhr3.send();
+  }]);
 
-// Objeto window tamaño pantalla
-var Xwidth = window.innerWidth;
-var Ywidth = window.innerHeight;
+  return Person;
+})(Human);
 
-console.log(Xwidth);
-console.log(Ywidth);
+var p = new Person("Sergio Forés", 43);
+p.toString(); //Hello, my name is Michael Jacksan and my age is 43.
 
+console.log(p.toString());
+// !function() { // https://teamtreehouse.com/library/the-module-pattern-in-javascript-2
+/***********************************/
+/****** Eventos window.onload ******/
+/***********************************/
 
+// TO CONSIDER: Modular JS and use of templates
+//www.youtube.com/watch?v=m-NYyst_tiY&index=2&list=PLoYCgNOIyGABs-wDaaxChu82q_xQgUb4f
 
-console.log(window.screen.availWidth);
-console.log(window.screen.availHeight);
-console.log(window.screen.width);
-console.log(window.screen.height);
-console.log(window.screen.colorDepth);
-console.log(document.cookie);
+// import * as math from "./modules";
+// alert("2π = " + math.sum(math.pi, math.pi));
 
-// Timing
-// var popUp = document.getElementById('mainDiv');
-// popUp.innerHTML = prompt('holaaaaaa como estas');
+'use strict';
 
-// setInterval
+window.addEventListener('load', onWindowLoaded, false);
 
+function onWindowLoaded() {}
 
+//medium.com/@JCastigliano/javascript-4-everybody-ecmascript-6-spanish-version-2832cfc6d891
+// import utils from 'modules'
+// console.log(utils.calculateTaxes(45, 0.5)); //22.5
 
+// } ();
+"use strict";
 
-var nuevoDiv = document.createElement('div');
-nuevoDiv.setAttribute('id','nuevoDiv');
-nuevoDiv.innerHTML = '9999999999999999 9999999';
-console.log(nuevoDiv );
+//module
+// var utils = {
+//   calculateTaxes: function(price, percent){
+//     return price * percent;
+//   }
+// }
+// //export
+// export default utils;
 
-
-// var src = document.createElement('script');
-// src.setAttribute('src','assets/js/otherjs.js');
-// document.head.appendChild(src);
-
-// var loc = window.location.href;
-// console.log(loc);
-
-
-
-
-var html = document.documentElement;
-console.info(html);
-
-var head = html.firstChild;
-console.info(head);
-
-var headChilds = head.childNodes;
-for (var i = 0; i < headChilds.length; i++) {
-  var headChild = headChilds[i];
-  console.info(headChild);
-  // console.info(headChild.nodeName);
-}
-
-var body = html.lastChild;
-console.info(body);
-
-var bodyChilds = body.childNodes;
-
-for (var i = 0; i < bodyChilds.length; i++) {
-  var bodyChild = bodyChilds[i];
-  console.info(bodyChild);
-}
-
-// Constructor de Objeto principal
-var Hero = function( params){
-  this.powers = [];
-  this.weakness = [];
-  this.name = params.name;
-};
-
-var SuperHeroe = function(){
-  this.tendence = 'Good';
-  Hero.apply(this, arguments);
-}
-
-var Villain = function(){
-  this.tendence = 'Bad';
-  Hero.apply(this, arguments);
-}
-
-var paramSuperman = { 'name': 'Superman' };
-var superman = new SuperHeroe( paramSuperman );
-
-var paramJocker = { 'name': 'Jocker' };
-var jocker = new Villain( paramJocker );
-
-console.dir(superman);
-console.dir(jocker);
-
+// export function sum(x, y) {
+//   return x + y;
+// }
+// export var pi = 3.141593;
+"use strict";
 
 /****** nav.js ******/
 
 // Active current item when its 'href' equals 'pathname'
-var nav = document.getElementById('mainNav');
-var anchor = mainNav.getElementsByTagName('a');
-var current = window.location.pathname;
+// var nav = document.getElementById( 'mainNav' );
+// var anchor = mainNav.getElementsByTagName( 'a' );
+// var current = window.location.pathname;
+//
+// for  ( var i = 0; i < anchor.length; i++ )  {
+//     if (anchor[i].pathname === current) {
+//       this.anchor[i].setAttribute( 'class', 'active' );
+//     }
+// }
 
-for (var i = 0; i < anchor.length; i++) {
-    if (anchor[i].pathname === current) {
-      this.anchor[i].setAttribute('class', 'active');
+//https://medium.com/@JCastigliano/javascript-4-everybody-ecmascript-6-spanish-version-2832cfc6d891
+// posts.forEach(post=> {
+//   console.log(post.toString());
+// });
+'use strict';
+
+!(function () {
+  // https://teamtreehouse.com/library/the-module-pattern-in-javascript-2
+
+  /****** json.js ******/
+
+  // posts
+  var xhrPostsReq = new XMLHttpRequest();
+  var url = 'https://public-api.wordpress.com/rest/v1.1/sites/t0twpapi.wordpress.com/posts/';
+  xhrPostsReq.onreadystatechange = jsonGot;
+  xhrPostsReq.open('get', url, true);
+  xhrPostsReq.send();
+  // xhrPostsReq.close();
+
+  function jsonGot() {
+    if (xhrPostsReq.readyState === 4) {
+      if (xhrPostsReq.status === 200) {
+
+        var myJSON = JSON.parse(xhrPostsReq.responseText);
+        var posts = '';
+        for (var i = 0; i < myJSON.posts.length; i++) {
+          var post = myJSON.posts[i];
+          var dateParsed = post.date.split('+')[0];
+          posts += '<h3>' + post.title + '</h3>';
+          posts += '<small>' + dateParsed + '</small>';
+          posts += post.content;
+        }
+        document.getElementById('posts').innerHTML = posts;
+      } else {
+        alert('Tienes problemas para abrir el Json pero tranquilo el sol brilla y los pajaros cantan');
+      }
     }
-}
+  }
 
+  // paginas
+  var url2 = 'http://caferminet.es/wp-json/';
+  var xhrReq2 = new XMLHttpRequest();
+  xhrReq2.addEventListener('load', function () {
+    if (this.readyState === this.DONE) {
+      var jsonReq2 = JSON.parse(this.responseText);
+      console.log(jsonReq2);
+    }
+  });
+  xhrReq2.open('get', url2);
+  xhrReq2.send();
 
-// var url = document.getElementsByTagName('a')[0];
-// console.log(
-// 	url.href + '\n' +			// the full URL
-// 	url.protocol + '\n' +		// http:
-// 	url.hostname + '\n' +		// site.com
-// 	url.port + '\n' +			// 81
-// 	url.pathname + '\n' +		// /path/page
-// 	url.search + '\n' +			// ?a=1&b=2
-// 	url.hash					// #hash
-// );
+  // paginas
+  var url3 = 'http://caferminet.es/wp-json/posts';
+  var xhrPostsReq3 = new XMLHttpRequest();
+  xhrPostsReq3.addEventListener('load', function () {
+    if (this.readyState === this.DONE) {
 
+      var jsonReq3 = JSON.parse(this.responseText);
+      console.log('paginas: ' + jsonReq3);
+      for (var i = 0; i < jsonReq3.length; i++) {}
+    }
+  });
+  xhrPostsReq3.open('get', url3);
+  xhrPostsReq3.send();
+})();
 //# sourceMappingURL=build.js.map

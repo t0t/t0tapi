@@ -10,15 +10,14 @@ var gulp      = require('gulp'),
   csso        = require('gulp-csso'),
   minifyHTML  = require('gulp-minify-html'),
   del         = require('del'),
-  jade        = require('gulp-jade');
-
-
-
+  jade        = require('gulp-jade'),
+  babel       = require('gulp-babel');
 
 
 // concat Js
 gulp.task('concatJs', function() {
   return gulp.src(['./js/src/*.js'])
+    .pipe(babel())
     .pipe(maps.init())
     .pipe(concat('build.js'))
     .pipe(maps.write('./'))
@@ -88,8 +87,11 @@ gulp.task('watch', function(){
 
 
 
-
-
+// transcompile to ES6
+// gulp.task('default', function () {
+// 	return gulp.src('src/app.js')
+//
+// });
 
 // dev
 gulp.task('dev', ['watch'], function(){
